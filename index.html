@@ -1,39 +1,251 @@
 <!DOCTYPE html>
-<html lang="en"></html>
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-  <title>Document</title>
-  <link rel="stylesheet" type="text/css" href="css/style.css"/>
-</head>
-<body>
-  <header class="header">
-    <div class="header__content">
-      <div class="header__left"><a class="logo" href="/"><img src="img/logo.png" alt="alt"/></a></div>
-      <nav class="header__right">
-        <ul class="navbar">
-          <li class="navbar__item"><a class="navbar__link" href="#">Page 0</a></li>
-          <li class="navbar__item"><a class="navbar__link" href="#">Page 1</a></li>
-          <li class="navbar__item"><a class="navbar__link" href="#">Page 2</a></li>
-          <li class="navbar__item"><a class="navbar__link" href="#">Page 3</a></li>
-          <li class="navbar__item"><a class="navbar__link" href="#">Page 4</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-  <main class="main_content">
-    <div class="container_center">
-      <div class="grid">
-        <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, in.</div>
-        <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo numquam sequi officiis. Quia sed modi voluptatem, aut rem possimus at ipsa nobis iure non corporis nulla suscipit praesentium quos numquam quasi magni delectus eius illo, harum hic id! Laboriosam culpa recusandae nesciunt ab natus molestiae porro reiciendis, eveniet architecto temporibus!</div>
-        <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt fugiat, pariatur, explicabo ut quidem deleniti velit sed error dolor! Voluptates dignissimos consectetur repudiandae ipsam. Iusto, rerum, quam! Corporis, nisi, inventore?</div>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css?1.7"/>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__content">
+        <div class="header__left"><a class="mobile" href="index.html"> <span class="icon_cams"></span></a>
+          <nav class="nav">
+            <ul class="navbar">
+              <li class="navbar__item"><a class="navbar__link" href="index.html"><i class="icon_cams"></i></a></li>
+              <li class="navbar__item"><a class="navbar__link" href="index.html#jobs" data-slide="3">Портфолио         </a>
+              </li>
+              <li class="navbar__item"><a class="navbar__link" href="index.html#about" data-slide="2">Обо мне</a></li>
+              <li class="navbar__item"><a class="navbar__link" href="index.html#price" data-slide="4">Цены</a></li>
+            </ul>
+          </nav>
+        </div>
+        <nav class="header__right">
+          <div class="header__action">
+            <div class="nav__toggle mobile"></div><a href="#callback" data-toggle="modal"><i class="icon_mail"></i><span>Обсудим?</span></a><a href="tel:+7 945 128 92 00"><i class="icon_phone"></i><span>+7 945 128 92 00</span></a>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main class="main_content" id="main">
+      <!-- begin home-->
+      <section class="firstScreen section" id="home">
+        <div class="section__left">
+          <div class="name">Валентина Рыцарева</div>
+          <h2 class="section__title">Видеограф <br>с многолетним опытом</h2>
+        </div>
+        <!-- Для вставки конкретного видео используем id из ссылки с youtube-->
+        <div class="firstScreen__video">
+          <div class="video__wrapper player" id="1vmDYpMp0uc">
+            <div id="player"></div>
+          </div>
+        </div>
+        <div class="firstScreen__text">
+          <div class="firstScreen__text-left">Video Workshop
+            <button class="icon_next" type="button"></button>
+          </div>
+          <div class="firstScreen__text-right">Мы регулярно делаем мастер-классы для начинающих видеографов и опытных коллег. 2018 год стал для нас особо знаковым - мы удвоили количество мастер-классов, сняли свою идеальную свадьбу, наконец, стали победителями Wedding Awards - самой престижной премии в свадебной индустрии России. </div>
+        </div>
+        <div class="voice">
+          <div class="voice__icon muted">
+            <div></div>
+          </div>
+          <div class="voice__state">Выкл</div>
+        </div>
+      </section>
+      <!-- end home-->
+      <!-- begin about-->
+      <section class="about section" id="about">
+        <div class="section__left">
+          <div class="name">Валентина Рыцарева</div>
+          <h2 class="section__title">Видеограф <br>с многолетним опытом</h2>
+        </div>
+        <div class="about__photo"><img src="img/photo.jpg" alt="Валентина Рыцарева"/></div>
+        <div class="about__action">
+          <div class="about__action-text">Посмотреть работы</div>
+          <button class="icon_next" type="button" data-slide="3"></button>
+        </div>
+        <div class="about__content">
+          <div class="about__title">Хорошие исходники <br>и качественный монтаж  - моя сила!</div>
+          <div class="about__text">
+            <p>Хорошие исходники - это важно. В течении недели после свадьбы я отправлю вам "Репортажный фильм" - это весь отснятый материал, который слеплен в один большой трек для удобства просмотра. Все исходники.</p>
+            <p>Вы смотрите "Репортажный фильм" и понимаете, что именно вы хотели бы видеть в своем фильме. Мы внимательно выслушиваем ваши пожелания и вставляем в фильм только вашу любимую музыку. После просмотра у вас есть одни бесплатные правки.</p>
+            <div class="about__client">
+              <div class="about__percent">97%</div>Клиентов довольны конечным продуктом! 
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- end about-->
+      <!-- begin jobs-->
+      <section class="jobs section" id="jobs">
+        <div class="section__left">
+          <div class="name">Избранные работы</div>
+          <h2 class="section__title">Более <br>25 счастливых клиентов</h2>
+        </div>
+        <div class="jobs__content scrolled">
+          <div class="jobs__item"><a class="jobs__video" href="projects.html#projects1">
+              <div class="video__wrapper" id="1vmDYpMp0uc"><img src="img/video-bg.jpg" alt="alt"/></div></a>
+            <div class="jobs__descr">
+              <div class="jobs__name">Alexander & Anastasia / Montenegro</div>
+              <div class="jobs__city">Черногория</div>
+              <div class="jobs__text">Он - диджей, она - видеограф. Никто и не рассчитывал на стандартный свадебный клип. Как выяснилось, центр Москвы - отличный выбор для свадебной прогулки. </div>
+            </div>
+          </div>
+          <div class="jobs__item"><a class="jobs__video" href="projects.html#projects2">
+              <div class="video__wrapper" id="rvYyhMNoN8I"><img src="img/video-bg.jpg" alt="alt"/></div></a>
+            <div class="jobs__descr">
+              <div class="jobs__name">Sasha & Anya</div>
+              <div class="jobs__city">краснодар</div>
+              <div class="jobs__text">Красивое место, дорогой номер и наличие балкона - и получились отличные сборы. Хорошее настроение и подружки с утра - и эмоции начинают проявляться сами.</div>
+            </div>
+          </div>
+          <div class="jobs__item"><a class="jobs__video" href="#">
+              <div class="video__wrapper" id="Bey4XXJAqS8"><img src="img/video-bg.jpg" alt="alt"/></div></a>
+            <div class="jobs__descr">
+              <div class="jobs__name">Alexander & Anastasia / Montenegro</div>
+              <div class="jobs__city">Черногория</div>
+              <div class="jobs__text">Он - диджей, она - видеограф. Никто и не рассчитывал на стандартный свадебный клип. Как выяснилось, центр Москвы - отличный выбор для свадебной прогулки. </div>
+            </div>
+          </div>
+          <div class="jobs__item"><a class="jobs__video" href="#">
+              <div class="video__wrapper" id="kQKi3bFFjT8"><img src="img/video-bg.jpg" alt="alt"/></div></a>
+            <div class="jobs__descr">
+              <div class="jobs__name">Sasha & Anya</div>
+              <div class="jobs__city">краснодар</div>
+              <div class="jobs__text">Красивое место, дорогой номер и наличие балкона - и получились отличные сборы. Хорошее настроение и подружки с утра - и эмоции начинают проявляться сами.</div>
+            </div>
+          </div>
+        </div>
+        <div class="scroll"> <span class="desctop">scroll</span><span class="mobile">больше работ</span></div>
+      </section>
+      <!-- end jobs-->
+      <!-- begin price-->
+      <section class="price section" id="price">
+        <div class="section__left">
+          <h2 class="name">Цены</h2>
+        </div>
+        <div class="price__content">
+          <div class="price__item">
+            <div class="price__name">Клип
+              <div class="price__summ">70 000 ₽</div>
+            </div>
+            <div class="price__descr">
+              <ul>
+                <li>клип 3-5 минут</li>
+                <li>2 оператора</li>
+                <li>до 8 съемочных часов</li>
+                <li>аэросъемка</li>
+                <li>весь исходный материал</li>
+              </ul>
+              <ul>
+                <li>подарочная упаковка</li>
+              </ul>
+            </div>
+          </div>
+          <div class="price__item">
+            <div class="price__name">Фильм
+              <div class="price__summ">90 000 ₽</div>
+            </div>
+            <div class="price__descr">
+              <ul>
+                <li>фильм до 15 минут</li>
+                <li>тизер до 1 минуты</li>
+                <li>предсвадебная съемка</li>
+                <li>2 оператора</li>
+                <li>до 10 съемочных часов</li>
+              </ul>
+              <ul>
+                <li>аэросъемка</li>
+                <li>весь исходный материал</li>
+                <li>подарочная упаковка</li>
+              </ul>
+            </div>
+          </div>
+          <div class="price__item">
+            <div class="price__name">Клип + фильм
+              <div class="price__summ">110 000 ₽</div>
+            </div>
+            <div class="price__descr">
+              <ul>
+                <li>клип 3-5 минут</li>
+                <li>фильм 25-40 минут</li>
+                <li>тизер до 1 минуты</li>
+                <li>предсвадебная съемка</li>
+                <li>2 оператора</li>
+              </ul>
+              <ul>
+                <li>до 12 съемочных часов</li>
+                <li>аэросъемка</li>
+                <li>весь исходный материал</li>
+                <li>подарочная упаковка</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="price__info">
+          <ul>
+            <li>дополнительный съемочный час – 9000Р </li>
+            <li>SDE (монтаж в день свадьбы) – 25 000Р</li>
+            <li>предсвадебная съемка – 30 000Р </li>
+            <li>отказ от публикации – 30 000Р </li>
+            <li>ускоренный монтаж (14 дней) – 30 000Р </li>
+          </ul>
+          <ul>
+            <li>Срок монтажа от 3 до 6 месяцев</li>
+            <li>Условия заграничных съемок обсуждаются индивидуально</li>
+            <li>Все цены, указанные на этом сайте, приведены как справочная информация и не являются публичной офертой</li>
+          </ul>
+        </div>
+      </section>
+      <!-- end price-->
+    </main>
+    <footer class="footer">
+      <div class="soc"><a class="icon_vimeo" href="#"></a><a class="icon_insta" href="#"></a><a class="icon_youtube" href="#"></a><a class="icon_vk" href="#"></a></div>
+    </footer>
+    <div class="cams"><img src="img/cams.svg" alt=""/></div>
+    <!-- Begin Modal callback-->
+    <div class="modal fade callback" id="callback">
+      <div class="modal-dialog">
+        <div class="layer layer-3" data-speed="0.6"></div>
+        <div class="layer layer-2" data-speed="0.4"></div>
+        <div class="layer layer-1" data-speed="0.2"></div>
+        <div class="modal-content">
+          <button class="modal-close" type="button" data-dismiss="modal"></button>
+          <div class="modal-header">
+            <div class="modal-title">Обсудим?</div>
+          </div>
+          <div class="modal-body"> 
+            <form class="form">
+              <div class="form__grid">
+                <div class="form__col">
+                  <div class="form__row">
+                    <input type="text" placeholder="Имя" required="required"/>
+                  </div>
+                </div>
+                <div class="form__col">
+                  <div class="form__row">
+                    <input type="text" placeholder="E-mail" required="required"/>
+                  </div>
+                </div>
+                <div class="form__col form__col_full">
+                  <div class="form__row">
+                    <textarea placeholder="Что вас интересует?"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="form__action">
+                <button class="btn" type="submit">Отправить<i class="icon_next"></i></button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
-  </main>
-  <footer class="footer">
-    <div class="container_center">
-      <p></p>&copy; 2016 |<i class="fa fa-github" aria-hidden="true">&nbsp;</i><a href="#">View Source</a>
-    </div>
-  </footer>
-</body>
+    <!-- End modal callback-->
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.tinyscrollbar.min.js"></script>
+    <script src="js/function.min.js?1.7"></script>
+  </body>
+</html>

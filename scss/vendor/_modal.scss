@@ -1,4 +1,5 @@
 // Modal / bootstrap ------------------------------------------
+
 .modal {
     display: none;
     overflow: auto;
@@ -11,59 +12,107 @@
     z-index: 1050;
     -webkit-overflow-scrolling: touch;
     outline: 0;
+
+    @media (min-width: 768px) {
+        overflow: hidden;
+    }
+
     &-open {
         overflow: hidden;
     }
+
     &-close {
         position: absolute;
-        width: 21px;
-        height: 21px;
-        right: 23px;
-        top: 23px;
+        width: 2em;
+        height: 2em;
+        right: 2em;
+        top: 2em;
+        color: #fff;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        z-index: 10;
+
+        @media (min-width: 768px) {
+            border: 0.05em solid;
+            border-radius: 50%;
+        }
         // background: image-url('close.svg') no-repeat center center;
-        &:before,&:after {
+        &:after,
+        &:before {
             content: '';
             position: absolute;
             display: block;
-            width: 20px;
-            border-top: 1px solid $main_color;
-            top: 10px;
+            width: 100%;
+            left: 0;
+            margin-top: -0.05em;
+            top: 50%;
+
+            @media (min-width: 768px) {
+                width: 60%;
+                left: 20%;
+                border: 0.05em solid;
+            }
+
+            @media (max-width: 767px) {
+                border-top: 0.2em solid;
+            }
         }
+
         &:before {
             transform: rotate(45deg);
         }
+
         &:after {
             transform: rotate(-45deg);
         }
+
         &:hover {
-            opacity: .8;
+            // opacity: 0.8;
+            color: #807870;
         }
     }
+
     &.fade .modal-dialog {
-        transform: translate(0, -25%);
-        transition: transform 0.3s ease-out;
+        transform: translate(0, 100%);
+        transition: transform 0.5s ease-out;
     }
+
     &.in .modal-dialog {
         transform: translate(0, 0);
         position: relative;
     }
+
     &-dialog {
         position: relative;
-        width: auto;
-        margin: 10px auto;
-        max-width: 690px;
+        overflow: hidden;
+        // width: auto;
+        margin: 0;
+        width: 100%;
+        height: 100vh;
+        max-width: 100%;
+        display: flex;
+        background-color: #000;
+        align-items: center;
+        justify-content: center;
+
+        // perspective: 80em;
     }
 
     &-content {
-        position: relative;
-        background-color: #fff;
-        border: 1px solid #999;
-        border: 1px solid rgba(0,0,0,.2);
-        border-radius: 6px;
-        box-shadow: 0 3px 9px rgba(0,0,0,.5);
+        // flex-grow: 1;
+        // position: relative;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
         background-clip: padding-box;
         outline: 0;
-        padding: 46px 53px;
+        padding: 1em;
+        width: 100%;
+        max-width: 46.4em;
+
+        position: relative;
+        z-index: 20;
     }
 
     &-backdrop {
@@ -74,13 +123,14 @@
         left: 0;
         z-index: 1040;
         background-color: #000;
+
         &.fade {
             opacity: 0;
             filter: alpha(opacity=0);
         }
 
         &.in {
-            opacity: .5;
+            opacity: 0.5;
             filter: alpha(opacity=50);
         }
     }
@@ -90,14 +140,23 @@
         min-height: 16.42857143px;
         color: #666;
         font-size: 18px;
+        position: relative;
+
         .close {
             margin-top: -2px;
         }
     }
 
     &-title {
-        margin: 0;
-        line-height: 1.42857143;
+        font-size: 2.1em;
+        margin: 0 0 0.7em;
+        font-family: "Yeseva One";
+        color: #ffffff;
+
+        @media (min-width: 768px) {
+            font-size: 4.1em;
+            margin: 0 0 0.95em;
+        }
     }
 
     &-body {
@@ -110,6 +169,7 @@
         padding: 19px 20px 20px;
         text-align: right;
         border-top: 1px solid #e5e5e5;
+
         .btn+.btn {
             margin-left: 5px;
             margin-bottom: 0;
@@ -125,6 +185,3 @@
     }
 
 }
-
-
-

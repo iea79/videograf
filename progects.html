@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css?0.9"/>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__content">
+        <div class="header__left"><a class="mobile" href="/"> <span class="icon_cams"></span></a>
+          <nav class="nav">
+            <ul class="navbar">
+              <li class="navbar__item"><a class="navbar__link" href="/"><i class="icon_cams"></i></a></li>
+              <li class="navbar__item"><a class="navbar__link" href="#jobs" data-slide="3">Портфолио         </a></li>
+              <li class="navbar__item"><a class="navbar__link" href="#about" data-slide="2">Обо мне</a></li>
+              <li class="navbar__item"><a class="navbar__link" href="#price" data-slide="4">Цены</a></li>
+            </ul>
+          </nav>
+        </div>
+        <nav class="header__right">
+          <div class="header__action">
+            <div class="nav__toggle mobile"></div><a href="#callback" data-toggle="modal"><i class="icon_mail"></i><span>Обсудим?</span></a><a href="tel:+7 945 128 92 00"><i class="icon_phone"></i><span>+7 945 128 92 00</span></a>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main class="main_content" id="main">
+    </main>
+    <footer class="footer">
+      <div class="soc"><a class="icon_vimeo" href="#"></a><a class="icon_insta" href="#"></a><a class="icon_youtube" href="#"></a><a class="icon_vk" href="#"></a></div>
+    </footer>
+    <div class="cams"><img src="img/cams.svg" alt=""/></div>
+    <!-- Begin Modal callback-->
+    <div class="modal fade callback" id="callback">
+      <div class="modal-dialog">
+        <div class="layer layer-3" data-speed="0.6"></div>
+        <div class="layer layer-2" data-speed="0.4"></div>
+        <div class="layer layer-1" data-speed="0.2"></div>
+        <div class="modal-content">
+          <button class="modal-close" type="button" data-dismiss="modal"></button>
+          <div class="modal-header">
+            <div class="modal-title">Обсудим?</div>
+          </div>
+          <div class="modal-body"> 
+            <form class="form">
+              <div class="form__grid">
+                <div class="form__col">
+                  <div class="form__row">
+                    <input type="text" placeholder="Имя" required="required"/>
+                  </div>
+                </div>
+                <div class="form__col">
+                  <div class="form__row">
+                    <input type="text" placeholder="E-mail" required="required"/>
+                  </div>
+                </div>
+                <div class="form__col form__col_full">
+                  <div class="form__row">
+                    <textarea placeholder="Что вас интересует?"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="form__action">
+                <button class="btn" type="submit">Отправить<i class="icon_next"></i></button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End modal callback-->
+    <div class="loader">
+      <div class="lds">
+        <div>       </div>
+        <div>       </div>
+        <div>       </div>
+      </div>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.tinyscrollbar.min.js"></script>
+    <script src="js/function.min.js?0.9"></script>
+  </body>
+</html>

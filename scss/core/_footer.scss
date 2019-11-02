@@ -1,13 +1,38 @@
 /* Footer
  ----------------------------------------------------------------------------- */
 .footer {
-	font-size: $main_font_size;
-	position: relative;
-	// height: $footer_height;
-	background: #BFF08E;
-	// @extend %clear_all;
+
+	@media (min-width: 768px) {
+		position: absolute;
+		opacity: 0;
+		right: 7.7em;
+		top: 6.9em;
+		z-index: 1000;
+
+	}
+
+	@media (max-width: 767px) {
+		position: relative;
+		background-color: #000;
+	}
+
 	.container_center {
 		// padding-top: 10px;
 		// padding-bottom: 10px;
+	}
+
+	.loaded & {
+		opacity: 1;
+		animation: showFooter 1.5s;
+	}
+}
+
+@keyframes showFooter {
+	0% {
+		transform: translate(200%, 0);
+	}
+
+	100% {
+		transform: translate(0, 0);
 	}
 }

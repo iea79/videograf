@@ -1,0 +1,103 @@
+-var version = '1.7';
+block variables
+    -var project = false;
+    -var bodyClass = '';
+
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title Document
+
+        link(rel="stylesheet", type="text/css", href="css/style.css?"+version+"")
+    body(class= bodyClass)
+        header.header
+            .header__content
+                .header__left
+                    a.mobile(href="index.html") 
+                        span.icon_cams
+                    nav.nav
+                        ul.navbar
+                            li.navbar__item
+                                a.navbar__link(href="index.html")
+                                    i.icon_cams
+                            li.navbar__item
+                                if bodyClass == 'project__page'
+                                    a.navbar__link(href="index.html#jobs" data-slide="3") Назад в портфолио         
+                                else
+                                    a.navbar__link(href="index.html#jobs" data-slide="3") Портфолио         
+                            li.navbar__item
+                                a.navbar__link(href="index.html#about" data-slide="2") Обо мне
+                            li.navbar__item
+                                a.navbar__link(href="index.html#price" data-slide="4") Цены
+                nav.header__right
+                    .header__action
+                        .nav__toggle.mobile
+                        a(href="#callback" data-toggle="modal")
+                            i.icon_mail
+                            span Обсудим?
+                        a(href="tel:+7 945 128 92 00")
+                            i.icon_phone
+                            span +7 945 128 92 00
+
+
+        main.main_content#main
+
+            block content
+
+        footer.footer
+            .soc
+                a(href="#").icon_vimeo
+                a(href="#").icon_insta
+                a(href="#").icon_youtube
+                a(href="#").icon_vk
+
+        if (project == false)
+            .cams
+                img(src="img/cams.svg", alt="")
+
+        //- // Button trigger modal callback
+        //- button(class="btn btn-primary btn-lg" data-toggle="modal" data-target="#callback") Click to open modal
+        // Begin Modal callback
+        .modal.fade.callback#callback
+            .modal-dialog
+                div.layer.layer-3(data-speed="0.6")
+                div.layer.layer-2(data-speed="0.4")
+                div.layer.layer-1(data-speed="0.2")
+                .modal-content
+                    button(type="button" class="modal-close" data-dismiss="modal")
+                    .modal-header
+                        .modal-title Обсудим?
+                    .modal-body 
+                        form.form
+                            .form__grid
+                                .form__col
+                                    .form__row
+                                        input(type="text", placeholder="Имя" required)
+                                .form__col
+                                    .form__row
+                                        input(type="text", placeholder="E-mail" required)
+                                .form__col.form__col_full
+                                    .form__row
+                                        textarea(placeholder="Что вас интересует?")
+                            .form__action
+                                button.btn(type="submit") Отправить
+                                    i.icon_next
+                                        //- img(src="img/arrow-right.svg", alt="")
+
+        // End modal callback
+
+        //- .loader
+            .lds
+                div        
+                div        
+                div        
+
+        script(src="js/jquery.js")
+        script(src="js/jquery.tinyscrollbar.min.js")
+        //- script(src="http://www.youtube.com/iframe_api")
+        //- script(src="js/jquery.onepage-scroll.min.js")
+
+        script(src="js/function.min.js?"+version+"")

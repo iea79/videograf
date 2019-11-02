@@ -1,40 +1,172 @@
-<!DOCTYPE html>
-html(lang="en")
-head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    meta(http-equiv="X-UA-Compatible", content="ie=edge")
-    title Document
+extends template.pug
 
-    link(rel="stylesheet", type="text/css", href="css/style.css")
-body
-    header.header
-        .header__content
-            .header__left
-                a.logo(href="/")
-                    img(src="img/logo.png", alt="alt")
-            nav.header__right
-                ul.navbar
-                    - var n = 0;
-                    -for (i=0; i<5; i++) {
-                        li.navbar__item
-                            a.navbar__link(href="#") Page #{i}
-                    -};
-                    //- while n < 6
-                    //-     li.navbar__item
-                    //-         a.navbar__link(href="#")= "Page " + n++
+block content
+    // begin home
+    section#home.firstScreen.section
+        .section__left
+            .name Валентина Рыцарева
 
-    main.main_content
-        .container_center
+            h2.section__title Видеограф <br>с многолетним опытом
+        // Для вставки конкретного видео используем id из ссылки с youtube
+        .firstScreen__video
+            .video__wrapper.player#1vmDYpMp0uc
+                #player
+        .firstScreen__text
+            .firstScreen__text-left
+                |Video Workshop
+                button.icon_next(type="button")
+                    //- img(src="img/arrow-right.svg", alt="")
+            .firstScreen__text-right Мы регулярно делаем мастер-классы для начинающих видеографов и опытных коллег. 2018 год стал для нас особо знаковым - мы удвоили количество мастер-классов, сняли свою идеальную свадьбу, наконец, стали победителями Wedding Awards - самой престижной премии в свадебной индустрии России. 
+        .voice
+            .voice__icon.muted
+                div
+            .voice__state Выкл
 
-            .grid
-                .grid__item Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, in.
-                .grid__item Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo numquam sequi officiis. Quia sed modi voluptatem, aut rem possimus at ipsa nobis iure non corporis nulla suscipit praesentium quos numquam quasi magni delectus eius illo, harum hic id! Laboriosam culpa recusandae nesciunt ab natus molestiae porro reiciendis, eveniet architecto temporibus!
-                .grid__item Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt fugiat, pariatur, explicabo ut quidem deleniti velit sed error dolor! Voluptates dignissimos consectetur repudiandae ipsam. Iusto, rerum, quam! Corporis, nisi, inventore?
+    // end home
 
-    footer.footer
-        .container_center
-            p
-            | &copy; 2016 |
-            i.fa.fa-github(aria-hidden='true') &nbsp;
-            a(href='#') View Source
+    // begin about
+    section#about.about.section
+        .section__left
+            .name Валентина Рыцарева
+
+            h2.section__title Видеограф <br>с многолетним опытом
+
+        .about__photo
+            img(src="img/photo.jpg", alt="Валентина Рыцарева")
+
+        .about__action
+            .about__action-text Посмотреть работы
+            button.icon_next(type="button" data-slide="3")
+                //- img(src="img/arrow-right.svg", alt="")
+
+        .about__content
+            .about__title Хорошие исходники <br>и качественный монтаж  - моя сила!
+            .about__text
+
+                p Хорошие исходники - это важно. В течении недели после свадьбы я отправлю вам "Репортажный фильм" - это весь отснятый материал, который слеплен в один большой трек для удобства просмотра. Все исходники.
+
+                p Вы смотрите "Репортажный фильм" и понимаете, что именно вы хотели бы видеть в своем фильме. Мы внимательно выслушиваем ваши пожелания и вставляем в фильм только вашу любимую музыку. После просмотра у вас есть одни бесплатные правки.
+
+                .about__client
+                    .about__percent 97%
+                    |Клиентов довольны конечным продуктом! 
+
+
+    // end about
+
+    // begin jobs
+    section#jobs.jobs.section
+        .section__left
+            .name Избранные работы
+
+            h2.section__title Более <br>25 счастливых клиентов
+
+        .jobs__content.scrolled
+            .jobs__item
+                a.jobs__video(href="projects.html#projects1")
+                    .video__wrapper#1vmDYpMp0uc
+                        img(src="img/video-bg.jpg", alt="alt")
+                .jobs__descr
+                    .jobs__name Alexander & Anastasia / Montenegro
+                    .jobs__city Черногория
+                    .jobs__text Он - диджей, она - видеограф. Никто и не рассчитывал на стандартный свадебный клип. Как выяснилось, центр Москвы - отличный выбор для свадебной прогулки. 
+
+            .jobs__item
+                a.jobs__video(href="projects.html#projects2")
+                    .video__wrapper#rvYyhMNoN8I
+                        img(src="img/video-bg.jpg", alt="alt")
+                .jobs__descr
+                    .jobs__name Sasha & Anya
+                    .jobs__city краснодар
+                    .jobs__text Красивое место, дорогой номер и наличие балкона - и получились отличные сборы. Хорошее настроение и подружки с утра - и эмоции начинают проявляться сами.
+
+            .jobs__item
+                a.jobs__video(href="#")
+                    .video__wrapper#Bey4XXJAqS8
+                        img(src="img/video-bg.jpg", alt="alt")
+                .jobs__descr
+                    .jobs__name Alexander & Anastasia / Montenegro
+                    .jobs__city Черногория
+                    .jobs__text Он - диджей, она - видеограф. Никто и не рассчитывал на стандартный свадебный клип. Как выяснилось, центр Москвы - отличный выбор для свадебной прогулки. 
+
+            .jobs__item
+                a.jobs__video(href="#")
+                    .video__wrapper#kQKi3bFFjT8
+                        img(src="img/video-bg.jpg", alt="alt")
+                .jobs__descr
+                    .jobs__name Sasha & Anya
+                    .jobs__city краснодар
+                    .jobs__text Красивое место, дорогой номер и наличие балкона - и получились отличные сборы. Хорошее настроение и подружки с утра - и эмоции начинают проявляться сами.
+
+
+        .scroll 
+            span.desctop scroll
+            span.mobile больше работ
+
+    // end jobs
+
+    // begin price
+    section#price.price.section
+        .section__left
+            h2.name Цены
+
+        .price__content
+            .price__item
+                .price__name Клип
+                    .price__summ 70 000 ₽
+                .price__descr
+                    ul
+                        li клип 3-5 минут
+                        li 2 оператора
+                        li до 8 съемочных часов
+                        li аэросъемка
+                        li весь исходный материал
+                    ul
+                        li подарочная упаковка
+
+            .price__item
+                .price__name Фильм
+                    .price__summ 90 000 ₽
+                .price__descr
+                    ul
+                        li фильм до 15 минут
+                        li тизер до 1 минуты
+                        li предсвадебная съемка
+                        li 2 оператора
+                        li до 10 съемочных часов
+                    ul
+                        li аэросъемка
+                        li весь исходный материал
+                        li подарочная упаковка
+
+            .price__item
+                .price__name Клип + фильм
+                    .price__summ 110 000 ₽
+                .price__descr
+                    ul
+                        li клип 3-5 минут
+                        li фильм 25-40 минут
+                        li тизер до 1 минуты
+                        li предсвадебная съемка
+                        li 2 оператора
+                    ul
+                        li до 12 съемочных часов
+                        li аэросъемка
+                        li весь исходный материал
+                        li подарочная упаковка
+
+        .price__info
+            ul
+                li дополнительный съемочный час – 9000Р 
+                li SDE (монтаж в день свадьбы) – 25 000Р
+                li предсвадебная съемка – 30 000Р 
+                li отказ от публикации – 30 000Р 
+                li ускоренный монтаж (14 дней) – 30 000Р 
+
+            ul
+                li Срок монтажа от 3 до 6 месяцев
+                li Условия заграничных съемок обсуждаются индивидуально
+                li Все цены, указанные на этом сайте, приведены как справочная информация и не являются публичной офертой
+
+
+    // end price

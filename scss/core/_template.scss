@@ -1,8 +1,10 @@
 // Main wrappers =====================================
 
 body {
-	display: flex;
-	flex-direction: column;
+	@media (min-width: 768px) {
+		// display: flex;
+		// flex-direction: column;
+	}
 }
 
 .wrapper {
@@ -13,7 +15,13 @@ body {
 /* Middle
  ----------------------------------------------------------------------------- */
 .main_content {
-	flex-grow: 1;
+	.disabled-onepage-scroll & {
+		@media (min-width: 768px) {
+			flex-grow: 1;
+			overflow: hidden;
+			transform: translate3d(0, 0px, 0px) !important;
+		}
+	}
 	// padding-bottom: $footer_height;
 	// @extend %clear_a;
 }
