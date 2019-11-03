@@ -3,9 +3,9 @@
 .footer {
 
 	@media (min-width: 768px) {
-		position: absolute;
+		position: fixed;
 		opacity: 0;
-		right: 7.7em;
+		right: 4.7em;
 		top: 6.9em;
 		z-index: 1000;
 

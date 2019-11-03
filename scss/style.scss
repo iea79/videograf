@@ -7,10 +7,9 @@
  */
 @import 'mixins/mixin'; // Fonts
 
-// font-family: 'Yeseva One', cursive;
 @import url('https://fonts.googleapis.com/css?family=Yeseva+One&display=swap&subset=cyrillic');
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,900&subset=cyrillic'); // Mixin for include fonts
-// @include font-face("ArialMT", 'fonts/CenturyGothic', normal, normal);
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,900&subset=cyrillic');
+
 // Import files
 @import 'variables/variables';
 @import 'core/reset';
@@ -19,18 +18,12 @@
 @import 'core/navbar';
 @import 'core/footer';
 @import 'core/form';
-// @import 'core/grid';
 @import 'core/soc';
-// @import 'core/breadcrumb';
-// @import 'core/pagination';
 @import 'core/buttons';
 @import 'core/video';
 @import 'core/loader';
 @import 'core/icon';
 
-@import 'vendor/onepage-scroll';
-// @import 'vendor/tinyscrollbar';
-@import 'vendor/jquery.jscrollpane';
 @import 'vendor/modal';
 @import 'vendor/fancybox';
 
@@ -38,13 +31,21 @@ body {
     font-size: calc(.04 * 100vw + 0px);
 
     @media (min-width: 768px) {
-        // display: flex;
-        // flex-direction: column;
-        // position: relative;
         font-size: calc(.0083 * 100vw + 0px);
 
         .onepage-wrapper {
             position: fixed !important;
+        }
+
+        &:before {
+            content: '';
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 66.2%;
+            z-index: -1;
+            background-color: #000;
         }
     }
 }
@@ -96,7 +97,6 @@ body {
 }
 
 .section {
-    // color: #fff;
     position: relative;
     overflow: hidden;
 
@@ -107,15 +107,8 @@ body {
 
     @media (min-width: 768px) {
         display: flex;
-        // display: none;
-        height: 100vh;
-        position: fixed;
-        left: 0;
-        top: 0;
+        min-height: 100vh;
         width: 100%;
-        height: 0;
-        opacity: 0;
-        z-index: 1;
     }
 
     &__left {
@@ -123,14 +116,23 @@ body {
         margin: 0 -1.2em;
 
         @media (min-width: 768px) {
-            position: relative;
-            z-index: 1;
+            position: fixed;
+            z-index: 0;
+            top: 0;
+            bottom: 0;
+            left: 0;
             width: 34.8%;
             opacity: 0;
 
-            .active & {
+            .visible & {
                 opacity: 1;
-                animation: showTitle 2.2s;
+                animation: showTitle 1s;
+                z-index: 1;
+            }
+
+            .invisible & {
+                opacity: 0;
+                z-index: 0;
             }
         }
 
@@ -141,7 +143,6 @@ body {
 
     &__right {
         position: relative;
-        // background-color: #000;
     }
 
     &__title {
@@ -155,12 +156,6 @@ body {
             font-size: 1.5em;
             max-width: 11.6em;
             padding-left: 4em;
-            // opacity: 0;
-            //
-            // .active & {
-            //     opacity: 1;
-            //     animation: showTitle 2s;
-            // }
         }
 
         @media (max-width: 767px) {
@@ -182,37 +177,17 @@ body {
 
     @media (min-width: 768px) {
         &:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            width: 0;
-            z-index: 0;
-            background: #000 center right no-repeat;
-            background-size: cover;
-            transition: 1.7s;
-            // animation: toLeft 1.8s;
             .loaded & {}
 
         }
 
         &.active {
-            opacity: 1;
-            z-index: 10;
-            // display: flex;
 
-            @media (min-width: 768px) {
-                position: fixed !important;
-            }
+            @media (min-width: 768px) {}
 
-            .disabled-onepage-scroll & {
-                left: 0 !important;
-            }
+            .disabled-onepage-scroll & {}
 
-            &:before {
-                // width: 65.2%;
-            }
+            &:before {}
         }
     }
 
@@ -227,7 +202,7 @@ body {
                 top: 0;
                 right: 0;
                 bottom: 0;
-                width: 65.2%;
+                width: 66.2%;
                 z-index: 0;
                 background: #000 center right no-repeat;
                 background-size: cover;
@@ -247,18 +222,15 @@ body {
     0% {
         opacity: 0;
         transform: translateX(-10em);
-        // margin-left: -10em;
     }
 
     50% {
         opacity: 0;
-        // margin-left: -10em;
         transform: translateX(-5em);
     }
 
     100% {
         opacity: 1;
-        // margin-left: 0;
         transform: translateX(0);
     }
 }
@@ -278,8 +250,8 @@ body {
 
     @media (min-width: 768px) {
         display: block;
-        position: absolute;
-        z-index: 0;
+        position: fixed;
+        z-index: 1;
         left: -16.6em;
         top: -4.2em;
         width: 30em;
@@ -367,9 +339,7 @@ body {
             color: lighten(#181818, 40%);
 
             div {
-                &:after {
-                    // display: block;
-                }
+                &:after {}
             }
         }
     }
@@ -393,18 +363,12 @@ body {
 
     @media (min-width: 768px) {
         position: relative;
-        z-index: 1;
-        width: 5.7em;
-        margin: 3.35em 1em 2.57em 0;
+        z-index: 4;
+        width: 6.1em;
+        margin: 3.65em 1em 2.57em 0;
         text-align: right;
         font-size: 4.8em;
         transform: rotate(-90deg);
-        // opacity: 0;
-        //
-        // .active & {
-        //     opacity: 1;
-        //     animation: showTitle 1.9s;
-        // }
     }
 }
 
@@ -421,12 +385,10 @@ body {
     }
 
     &__video {
-        // transition: 1.5s;
 
         @media (min-width: 768px) {
             position: absolute;
             z-index: 20;
-            // left: 10%;
             left: 53.2%;
             top: 50.8%;
             transform: translate(-50%,-50%);
@@ -434,18 +396,28 @@ body {
             opacity: 0;
 
             .active & {
-                animation: showVideo 1.5s;
+                animation: showVideo 2s;
                 opacity: 1;
             }
         }
 
         @media (max-width: 767px) {
-            max-width: 96%;
-            margin: -5.5em auto 3.6em;
+            margin: -5.5em -1.2em 0;
         }
 
         img {
             width: 100%;
+        }
+    }
+
+    &__player {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        @media (max-width: 767px) {
+            z-index: 6 !important;
         }
     }
 
@@ -454,13 +426,11 @@ body {
         color: #ffffff;
         padding: 3em 1.5em 2em;
         margin: 0 -1.2em;
-        // transition: 2s;
 
         @media (min-width: 768px) {
             display: flex;
             padding: 6.5em 10.6em 1em;
             position: absolute;
-            // bottom: -100%;
             bottom: 0;
             right: 0;
             width: 52em;
@@ -469,9 +439,8 @@ body {
             opacity: 0;
 
             .active & {
-                animation: firstScreenText 2s;
+                animation: firstScreenText 1s;
                 opacity: 1;
-                // bottom: 0;
             }
         }
 
@@ -490,7 +459,6 @@ body {
 
         &-left {
             font-size: 1.8em;
-            // padding-top: -0.5em;
             @media (min-width: 768px) {
                 font-size: 1.5em;
                 margin-right: 3.6em;
@@ -536,7 +504,6 @@ button.icon_next {
     height: 1.74em;
     border: 0.063em solid rgba(255, 255, 255, 0.25);
     border-radius: 50%;
-    // display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
@@ -549,7 +516,6 @@ button.icon_next {
 
     &:hover {
         background-color: #978f87;
-        // border-width: 0.1em;
 
         &:before {
             color: #fff;
@@ -576,12 +542,10 @@ button.icon_next {
 
 @keyframes firstScreenText {
     0% {
-        // opacity: 0;
         transform: translate(0, 100%);
     }
 
     100% {
-        // opacity: 1;
         transform: translate(0%, 0%);
     }
 }
@@ -734,14 +698,13 @@ button.icon_next {
             padding: 13em 0.6em 3em 3.4em;
             position: absolute;
             z-index: 3;
-            left: 34.8%;
-            top: 39.3em;
+            left: 33.8%;
+            top: 40.3em;
             opacity: 0;
 
             &-text {
                 flex: none;
                 width: 63%;
-                // margin-right: 1em;
                 font-size: 0.75em;
                 font-weight: 700;
                 text-transform: uppercase;
@@ -802,8 +765,12 @@ button.icon_next {
             margin-right: 3.8em;
         }
         @media (max-width: 767px) {
-            padding-left: 2.7em;
+            padding: 0.9em 1.3em 0.9em 0.9em;
+            margin-left: 1.4em;
             margin-bottom: 1.4em;
+            background-color: #807870;
+            position: relative;
+            z-index: 2;
         }
     }
 
@@ -876,17 +843,13 @@ button.icon_next {
         color: #fff;
 
         @media (min-width: 768px) {
-            padding-top: 10em;
-            position: absolute;
-            top: 0;
-            right: 16em;
-            bottom: 0;
+            padding-top: 2em;
+            margin-left: 28em;
             max-height: 100%;
             width: 66.8%;
             z-index: 5;
             display: flex;
             flex-direction: column;
-            overflow-y: auto;
             outline: 0;
         }
 
@@ -899,30 +862,7 @@ button.icon_next {
         }
 
         &.top_overlay {
-
-            @media (min-width: 768px) {
-                &:after,
-                &:before {
-                    content: '';
-                    position: absolute;
-                    height: 10em;
-                    top: 0;
-                    z-index: 11;
-                }
-
-                &:before {
-                    right: 0;
-                    width: 88.7%;
-                    background: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,1), rgba(0,0,0,0));
-                }
-
-                &:after {
-                    left: 0;
-                    width: 11.3%;
-                    background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,1), rgba(255,255,255,0));
-                }
             }
-        }
 
     }
 
@@ -949,11 +889,6 @@ button.icon_next {
                     &__video {
                         order: 1;
                         opacity: 0;
-
-                        .active & {
-                            opacity: 1;
-                            animation: fadeRight 2s;
-                        }
                     }
 
                     &__descr {
@@ -962,9 +897,19 @@ button.icon_next {
                         text-align: right;
                         opacity: 0;
 
-                        .active & {
+                    }
+                }
+
+                &.show {
+                    .jobs {
+                        &__video {
                             opacity: 1;
-                            animation: fadeLeft 2s;
+                            animation: fadeRight 1s;
+                        }
+
+                        &__descr {
+                            opacity: 1;
+                            animation: fadeLeft 1s;
                         }
                     }
                 }
@@ -976,20 +921,24 @@ button.icon_next {
                         order: 0;
                         margin-right: 11%;
                         opacity: 0;
-
-                        .active & {
-                            opacity: 1;
-                            animation: fadeLeft 2s;
-                        }
                     }
 
                     &__descr {
                         order: 1;
                         opacity: 0;
+                    }
+                }
 
-                        .active & {
+                &.show {
+                    .jobs {
+                        &__video {
                             opacity: 1;
-                            animation: fadeRight 2s;
+                            animation: fadeLeft 1s;
+                        }
+
+                        &__descr {
+                            opacity: 1;
+                            animation: fadeRight 1s;
                         }
                     }
                 }
@@ -1060,13 +1009,11 @@ button.icon_next {
             border: 0.5em solid transparent;
             border-left-color: #fff;
             margin-left: 0.35em;
-            // opacity: 1;
         }
 
         &:hover {
             &:before {
                 opacity: 0.7 !important;
-                // opacity: 1;
             }
 
             &:after {
@@ -1115,6 +1062,18 @@ button.icon_next {
         }
     }
 
+    &__more {
+        text-align: center;
+
+        .btn {
+            width: 100%;
+            @media (min-width: 768px) {
+                width: auto;
+                margin-bottom: 3em;
+            }
+        }
+    }
+
 }
 
 .scroll {
@@ -1127,7 +1086,7 @@ button.icon_next {
     @media (min-width: 768px) {
         font-size: 0.625em;
         right: 10.9em;
-        bottom: 24.6em;
+        top: 64.6em;
         z-index: 6;
         position: absolute;
         transform: rotate(90deg);
@@ -1159,10 +1118,6 @@ button.icon_next {
     }
 }
 
-.jspPane {
-    // transition: top 0.1s;
-}
-
 .layer {
     position: absolute;
     display: block;
@@ -1175,7 +1130,6 @@ button.icon_next {
     right: 0;
     bottom: 0;
     left: 0;
-    // z-index: -0.1;
 
     @media (min-width: 768px) {
         opacity: 0.7;
@@ -1201,7 +1155,6 @@ button.icon_next {
 .price {
     &.active {
         &:before {
-            // width: 72.5%;
             z-index: 2;
         }
     }
@@ -1213,8 +1166,9 @@ button.icon_next {
     .name {
 
         @media (min-width: 768px) {
-            margin-top: 4.85em;
-            margin-left: -0.5em;
+            margin-top: 4.55em;
+            margin-bottom: 0.5em;
+            margin-left: -0.2em;
         }
     }
 
@@ -1237,7 +1191,7 @@ button.icon_next {
             right: 0;
             bottom: 0;
             z-index: 4;
-            width: 72.5%;
+            width: 66.2%;
         }
 
         @media (max-width: 767px) {
@@ -1299,16 +1253,10 @@ button.icon_next {
             display: flex;
         }
 
-        @media (max-width: 767px) {
-            // margin-bottom: 3em;
-        }
-
         ul {
             list-style: none;
             margin: 0;
             padding: 0;
-            // columns: 2 14em;
-            // column-gap: 8em;
 
             @media (min-width: 768px) {
                 margin: 0 8.4em 0 0;
@@ -1317,8 +1265,6 @@ button.icon_next {
             li {
                 margin: 1em 0;
                 position: relative;
-                // display: flex;
-                // align-items: center;
                 padding-left: 2em;
 
                 &:before {
@@ -1326,9 +1272,13 @@ button.icon_next {
                     position: absolute;
                     width: 1em;
                     font-size: 2.6em;
-                    top: -0.1em;
+                    top: -0.05em;
                     left: 0;
                     line-height: 0;
+
+                    @media (min-width: 768px) {
+                        top: -0.1em;
+                    }
                 }
             }
         }
@@ -1337,11 +1287,9 @@ button.icon_next {
     &__info {
 
         @media (min-width: 768px) {
-            position: absolute;
-            bottom: 2.7em;
-            left: 3.5em;
-            z-index: 4;
-            width: 25em;
+            margin-top: -1em;
+            padding: 0 0 2.7em 4.5em;
+            max-width: 30.5em;
         }
 
         ul {
@@ -1438,6 +1386,8 @@ button.icon_next {
     z-index: 0;
 
     @media (min-width: 768px) {
+        max-height: 100vh;
+
         &.active {
             z-index: 1;
 
@@ -1484,7 +1434,6 @@ button.icon_next {
     &__descr {
         padding: 2.3em 1.6em 3em;
         background-color: #fff;
-        // border: 1px solid #000;
 
         @media (min-width: 768px) {
             padding: 11.3em 7.6em 3.7em 6.2em;
@@ -1494,6 +1443,7 @@ button.icon_next {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            min-height: 100vh;
         }
 
     }
@@ -1528,13 +1478,13 @@ button.icon_next {
     &__text {
         width: 100%;
         color: #969696;
-        // border: 1px solid #000;
         font-weight: 400;
         font-size: 0.97em;
         line-height: 1.94;
         overflow-y: auto;
         flex-grow: 1;
         margin-bottom: 2.3em;
+        max-height: 23%;
         position: relative;
         z-index: 1;
         background-color: #fff;
@@ -1543,13 +1493,12 @@ button.icon_next {
             font-size: 0.875em;
             line-height: 2.14;
             margin-bottom: 4.2em;
+            padding-right: 0.2em;
         }
 
         @media (max-width: 767px) {
             max-height: 8.8em;
         }
-
-        // max-height: 220px;
 
         p {
             margin: 0.3em 0;
@@ -1588,7 +1537,6 @@ button.icon_next {
         }
 
         @media (max-width: 767px) {
-            overflow-y: auto;
             margin-right: -1.4em;
             white-space: nowrap;
             padding-left: 1.4em;
@@ -1666,6 +1614,10 @@ button.icon_next {
         .icon_prev {}
 
         .icon_next {}
+
+        @media (max-width: 767px) {
+            text-align: center;
+        }
     }
 
     &__next {}
@@ -1681,8 +1633,6 @@ button.icon_next {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            // background-color: #000;
-            // flex: none;
             flex-grow: 1;
         }
     }
@@ -1706,7 +1656,6 @@ button.icon_next {
 
     &__control {
         position: relative;
-        // padding: 1em 1.2em;
 
         @media (min-width: 768px) {
             padding: 2em 0.1em 2em 5.5em;
@@ -1791,7 +1740,6 @@ button.icon_next {
         color: #d3c7b9;
         font-size: 0.74em;
         text-transform: uppercase;
-        // Text style for "следующее"
         letter-spacing: 0.82em;
 
         @media (min-width: 768px) {
@@ -1836,5 +1784,22 @@ button.icon_next {
     100% {
         opacity: 1;
         transform: translateY(0%);
+    }
+}
+
+.scrolled {
+    @media (min-width: 768px) {
+        &::-webkit-scrollbar-track {
+            background-color: rgba(#000, 0.1);
+        }
+
+        &::-webkit-scrollbar {
+            width: 0.2em;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #000;
+            border-radius: 0.2em;
+        }
     }
 }

@@ -1,4 +1,4 @@
--var version = '1.7';
+-var version = '2.2';
 block variables
     -var project = false;
     -var bodyClass = '';
@@ -20,18 +20,26 @@ html(lang="en")
                         span.icon_cams
                     nav.nav
                         ul.navbar
-                            li.navbar__item
-                                a.navbar__link(href="index.html")
-                                    i.icon_cams
-                            li.navbar__item
-                                if bodyClass == 'project__page'
-                                    a.navbar__link(href="index.html#jobs" data-slide="3") Назад в портфолио         
-                                else
-                                    a.navbar__link(href="index.html#jobs" data-slide="3") Портфолио         
-                            li.navbar__item
-                                a.navbar__link(href="index.html#about" data-slide="2") Обо мне
-                            li.navbar__item
-                                a.navbar__link(href="index.html#price" data-slide="4") Цены
+                            if bodyClass == 'project__page'
+                                li.navbar__item
+                                    a.navbar__link(href="index.html")
+                                        i.icon_cams
+                                li.navbar__item
+                                    a.navbar__link(href="index.html#jobs") Назад в портфолио         
+                                li.navbar__item
+                                    a.navbar__link(href="index.html#about") Обо мне
+                                li.navbar__item
+                                    a.navbar__link(href="index.html#price") Цены
+                            else
+                                li.navbar__item
+                                    a.navbar__link(href="index.html")
+                                        i.icon_cams
+                                li.navbar__item
+                                    a.navbar__link(href="#jobs") Портфолио         
+                                li.navbar__item
+                                    a.navbar__link(href="#about") Обо мне
+                                li.navbar__item
+                                    a.navbar__link(href="#price") Цены
                 nav.header__right
                     .header__action
                         .nav__toggle.mobile
@@ -85,19 +93,9 @@ html(lang="en")
                             .form__action
                                 button.btn(type="submit") Отправить
                                     i.icon_next
-                                        //- img(src="img/arrow-right.svg", alt="")
 
         // End modal callback
 
-        //- .loader
-            .lds
-                div        
-                div        
-                div        
-
         script(src="js/jquery.js")
-        script(src="js/jquery.tinyscrollbar.min.js")
-        //- script(src="http://www.youtube.com/iframe_api")
-        //- script(src="js/jquery.onepage-scroll.min.js")
 
         script(src="js/function.min.js?"+version+"")

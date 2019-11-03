@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css?1.7"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css?2.2"/>
   </head>
   <body>
     <header class="header">
@@ -14,10 +14,9 @@
           <nav class="nav">
             <ul class="navbar">
               <li class="navbar__item"><a class="navbar__link" href="index.html"><i class="icon_cams"></i></a></li>
-              <li class="navbar__item"><a class="navbar__link" href="index.html#jobs" data-slide="3">Портфолио         </a>
-              </li>
-              <li class="navbar__item"><a class="navbar__link" href="index.html#about" data-slide="2">Обо мне</a></li>
-              <li class="navbar__item"><a class="navbar__link" href="index.html#price" data-slide="4">Цены</a></li>
+              <li class="navbar__item"><a class="navbar__link" href="#jobs">Портфолио         </a></li>
+              <li class="navbar__item"><a class="navbar__link" href="#about">Обо мне</a></li>
+              <li class="navbar__item"><a class="navbar__link" href="#price">Цены</a></li>
             </ul>
           </nav>
         </div>
@@ -37,8 +36,8 @@
         </div>
         <!-- Для вставки конкретного видео используем id из ссылки с youtube-->
         <div class="firstScreen__video">
-          <div class="video__wrapper player" id="1vmDYpMp0uc">
-            <div id="player"></div>
+          <div class="video__wrapper player" id="1vmDYpMp0uc"><img class="video__prev" src="img/project-bg.jpg" alt="Sasha &amp; Anya"/>
+            <div class="firstScreen__player" id="player"></div>
           </div>
         </div>
         <div class="firstScreen__text">
@@ -84,47 +83,62 @@
           <div class="name">Избранные работы</div>
           <h2 class="section__title">Более <br>25 счастливых клиентов</h2>
         </div>
-        <div class="jobs__content scrolled">
-          <div class="jobs__item"><a class="jobs__video" href="projects.html#projects1">
-              <div class="video__wrapper" id="1vmDYpMp0uc"><img src="img/video-bg.jpg" alt="alt"/></div></a>
+        <div class="jobs__content">
+          <div class="jobs__item"><a class="jobs__video" href="projects.html">
+              <div class="video__wrapper"><img src="img/video-bg.jpg" alt="alt"/></div></a>
             <div class="jobs__descr">
               <div class="jobs__name">Alexander & Anastasia / Montenegro</div>
               <div class="jobs__city">Черногория</div>
               <div class="jobs__text">Он - диджей, она - видеограф. Никто и не рассчитывал на стандартный свадебный клип. Как выяснилось, центр Москвы - отличный выбор для свадебной прогулки. </div>
             </div>
           </div>
-          <div class="jobs__item"><a class="jobs__video" href="projects.html#projects2">
-              <div class="video__wrapper" id="rvYyhMNoN8I"><img src="img/video-bg.jpg" alt="alt"/></div></a>
+          <div class="jobs__item"><a class="jobs__video" href="projects.html">
+              <div class="video__wrapper"><img src="img/video-bg.jpg" alt="alt"/></div></a>
             <div class="jobs__descr">
               <div class="jobs__name">Sasha & Anya</div>
               <div class="jobs__city">краснодар</div>
               <div class="jobs__text">Красивое место, дорогой номер и наличие балкона - и получились отличные сборы. Хорошее настроение и подружки с утра - и эмоции начинают проявляться сами.</div>
             </div>
           </div>
-          <div class="jobs__item"><a class="jobs__video" href="#">
-              <div class="video__wrapper" id="Bey4XXJAqS8"><img src="img/video-bg.jpg" alt="alt"/></div></a>
+          <div class="jobs__item"><a class="jobs__video" href="projects.html">
+              <div class="video__wrapper"><img src="img/video-bg.jpg" alt="alt"/></div></a>
             <div class="jobs__descr">
               <div class="jobs__name">Alexander & Anastasia / Montenegro</div>
               <div class="jobs__city">Черногория</div>
               <div class="jobs__text">Он - диджей, она - видеограф. Никто и не рассчитывал на стандартный свадебный клип. Как выяснилось, центр Москвы - отличный выбор для свадебной прогулки. </div>
             </div>
           </div>
-          <div class="jobs__item"><a class="jobs__video" href="#">
-              <div class="video__wrapper" id="kQKi3bFFjT8"><img src="img/video-bg.jpg" alt="alt"/></div></a>
+          <div class="jobs__item"><a class="jobs__video" href="projects.html">
+              <div class="video__wrapper"><img src="img/video-bg.jpg" alt="alt"/></div></a>
             <div class="jobs__descr">
               <div class="jobs__name">Sasha & Anya</div>
               <div class="jobs__city">краснодар</div>
               <div class="jobs__text">Красивое место, дорогой номер и наличие балкона - и получились отличные сборы. Хорошее настроение и подружки с утра - и эмоции начинают проявляться сами.</div>
             </div>
           </div>
+          <div class="scroll desctop"><span class="desctop">scroll</span></div>
+          <div class="jobs__more"><a class="btn btn_seccondary">больше работ</a></div>
         </div>
-        <div class="scroll"> <span class="desctop">scroll</span><span class="mobile">больше работ</span></div>
       </section>
       <!-- end jobs-->
       <!-- begin price-->
       <section class="price section" id="price">
         <div class="section__left">
           <h2 class="name">Цены</h2>
+          <div class="price__info">
+            <ul>
+              <li>дополнительный съемочный час – 9000₽ </li>
+              <li>SDE (монтаж в день свадьбы) – 25 000₽</li>
+              <li>предсвадебная съемка – 30 000₽ </li>
+              <li>отказ от публикации – 30 000₽ </li>
+              <li>ускоренный монтаж (14 дней) – 30 000₽ </li>
+            </ul>
+            <ul>
+              <li>Срок монтажа от 3 до 6 месяцев</li>
+              <li>Условия заграничных съемок обсуждаются индивидуально</li>
+              <li>Все цены, указанные на этом сайте, приведены как справочная информация и не являются публичной офертой</li>
+            </ul>
+          </div>
         </div>
         <div class="price__content">
           <div class="price__item">
@@ -184,20 +198,6 @@
             </div>
           </div>
         </div>
-        <div class="price__info">
-          <ul>
-            <li>дополнительный съемочный час – 9000Р </li>
-            <li>SDE (монтаж в день свадьбы) – 25 000Р</li>
-            <li>предсвадебная съемка – 30 000Р </li>
-            <li>отказ от публикации – 30 000Р </li>
-            <li>ускоренный монтаж (14 дней) – 30 000Р </li>
-          </ul>
-          <ul>
-            <li>Срок монтажа от 3 до 6 месяцев</li>
-            <li>Условия заграничных съемок обсуждаются индивидуально</li>
-            <li>Все цены, указанные на этом сайте, приведены как справочная информация и не являются публичной офертой</li>
-          </ul>
-        </div>
       </section>
       <!-- end price-->
     </main>
@@ -245,7 +245,6 @@
     </div>
     <!-- End modal callback-->
     <script src="js/jquery.js"></script>
-    <script src="js/jquery.tinyscrollbar.min.js"></script>
-    <script src="js/function.min.js?1.7"></script>
+    <script src="js/function.min.js?2.2"></script>
   </body>
 </html>

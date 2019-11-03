@@ -10,7 +10,8 @@ block content
         // Для вставки конкретного видео используем id из ссылки с youtube
         .firstScreen__video
             .video__wrapper.player#1vmDYpMp0uc
-                #player
+                img.video__prev(src="img/project-bg.jpg", alt="Sasha & Anya")
+                #player.firstScreen__player
         .firstScreen__text
             .firstScreen__text-left
                 |Video Workshop
@@ -61,10 +62,10 @@ block content
 
             h2.section__title Более <br>25 счастливых клиентов
 
-        .jobs__content.scrolled
+        .jobs__content
             .jobs__item
-                a.jobs__video(href="projects.html#projects1")
-                    .video__wrapper#1vmDYpMp0uc
+                a.jobs__video(href="projects.html")
+                    .video__wrapper
                         img(src="img/video-bg.jpg", alt="alt")
                 .jobs__descr
                     .jobs__name Alexander & Anastasia / Montenegro
@@ -72,8 +73,8 @@ block content
                     .jobs__text Он - диджей, она - видеограф. Никто и не рассчитывал на стандартный свадебный клип. Как выяснилось, центр Москвы - отличный выбор для свадебной прогулки. 
 
             .jobs__item
-                a.jobs__video(href="projects.html#projects2")
-                    .video__wrapper#rvYyhMNoN8I
+                a.jobs__video(href="projects.html")
+                    .video__wrapper
                         img(src="img/video-bg.jpg", alt="alt")
                 .jobs__descr
                     .jobs__name Sasha & Anya
@@ -81,8 +82,8 @@ block content
                     .jobs__text Красивое место, дорогой номер и наличие балкона - и получились отличные сборы. Хорошее настроение и подружки с утра - и эмоции начинают проявляться сами.
 
             .jobs__item
-                a.jobs__video(href="#")
-                    .video__wrapper#Bey4XXJAqS8
+                a.jobs__video(href="projects.html")
+                    .video__wrapper
                         img(src="img/video-bg.jpg", alt="alt")
                 .jobs__descr
                     .jobs__name Alexander & Anastasia / Montenegro
@@ -90,8 +91,8 @@ block content
                     .jobs__text Он - диджей, она - видеограф. Никто и не рассчитывал на стандартный свадебный клип. Как выяснилось, центр Москвы - отличный выбор для свадебной прогулки. 
 
             .jobs__item
-                a.jobs__video(href="#")
-                    .video__wrapper#kQKi3bFFjT8
+                a.jobs__video(href="projects.html")
+                    .video__wrapper
                         img(src="img/video-bg.jpg", alt="alt")
                 .jobs__descr
                     .jobs__name Sasha & Anya
@@ -99,9 +100,10 @@ block content
                     .jobs__text Красивое место, дорогой номер и наличие балкона - и получились отличные сборы. Хорошее настроение и подружки с утра - и эмоции начинают проявляться сами.
 
 
-        .scroll 
-            span.desctop scroll
-            span.mobile больше работ
+            .scroll.desctop
+                span.desctop scroll
+            .jobs__more
+                a.btn.btn_seccondary больше работ
 
     // end jobs
 
@@ -109,6 +111,19 @@ block content
     section#price.price.section
         .section__left
             h2.name Цены
+
+            .price__info
+                ul
+                    li дополнительный съемочный час – 9000₽ 
+                    li SDE (монтаж в день свадьбы) – 25 000₽
+                    li предсвадебная съемка – 30 000₽ 
+                    li отказ от публикации – 30 000₽ 
+                    li ускоренный монтаж (14 дней) – 30 000₽ 
+
+                ul
+                    li Срок монтажа от 3 до 6 месяцев
+                    li Условия заграничных съемок обсуждаются индивидуально
+                    li Все цены, указанные на этом сайте, приведены как справочная информация и не являются публичной офертой
 
         .price__content
             .price__item
@@ -155,18 +170,6 @@ block content
                         li весь исходный материал
                         li подарочная упаковка
 
-        .price__info
-            ul
-                li дополнительный съемочный час – 9000Р 
-                li SDE (монтаж в день свадьбы) – 25 000Р
-                li предсвадебная съемка – 30 000Р 
-                li отказ от публикации – 30 000Р 
-                li ускоренный монтаж (14 дней) – 30 000Р 
-
-            ul
-                li Срок монтажа от 3 до 6 месяцев
-                li Условия заграничных съемок обсуждаются индивидуально
-                li Все цены, указанные на этом сайте, приведены как справочная информация и не являются публичной офертой
 
 
     // end price

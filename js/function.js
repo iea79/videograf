@@ -5,18 +5,15 @@
  * Skype: ivanov_ea
  *
  */
-// @prepros-append jquery.onepage-scroll.min.js
-// @prepros-append jquery.jscrollpane.js
-// @prepros-append jquery.mousewheel.js
-// @prepros-append scroll.js
 // @prepros-append video.js
 // @prepros-append modal.js
+// @prepros-append jquery.viewportchecker.min.js
 // @prepros-append jquery.fancybox.min.js
 
 var app = {
     page: $('#main'),
     section: $('.section'),
-    hash: location.hash,
+    // hash: location.hash,
     fScroll: true,
     lgWidth: 1200,
     mdWidth: 992,
@@ -47,163 +44,117 @@ $(document).ready(function() {
 		event.preventDefault();
 	});
 
-    // Inputmask.js
-    // $('[name=tel]').inputmask("+9(999)999 99 99",{ showMaskOnHover: false });
-    // formSubmit();
-
     checkOnResize();
 
-    // $.fancybox.defaults.arrows = false;
     $.fancybox.defaults.transitionEffect = 'slide';
 
-    // loadPage();
-    setTimeout(function () {
-        // hideLoader();
-    }, 500);
     loadPage();
 
 });
 
-function renderContent() {
+// $('[data-scroll-to]').on('click', function(event){
+//     event.preventDefault();
+//     var scroll_el = $(this).attr('href');
+//     if ($(scroll_el).length != 0) {
+//         $('html, body').animate({ scrollTop: $(scroll_el).offset().top }, 500);
+//     }
+//     return false;
+// });
+function setActiveNav() {
+    var HeaderTop = $('header').offset().top;
+    var currentTop = $(window).scrollTop();
 
-    if (isXsWidth()) {
-        disabledScroll();
-        app.section.removeAttr('style');
-        app.page.removeClass('onepage-wrapper').removeAttr('style');
-        // setTimeout(function () {
-            // hideLoader();
-        // }, 1000);
-    } else {
-        enabledScroll();
-        app.page.onepage_scroll({
-            updateURL: true,
-            animationTime: -1,
-            direction: "horizontal",
-            loop: false,
-            pagination: false,
-            beforeMove: function(index) {
-                // showLoader();
-                setHash(index);
-                $('.navbar__link').removeClass('active');
-                // console.log(index);
-                app.fScroll = true;
-                app.section.removeClass('visibled');
-                // console.log(player);
-                // console.log(player.I.onReady);
-                $('.projects__photo').removeClass('show');
-                if (!$('.projects__video').length) {
-                    // player.remove();
-                    if (app.pageLoaded) {
-                        player.stopVideo();
-                    }
+    setNavbarPosition();
+
+    $(window).scroll(function(){
+        setNavbarPosition();
+    });
+
+    function setNavbarPosition() {
+        currentTop = $(window).scrollTop() + 100;
+
+        $('.navbar__link').each(function(index, el) {
+            var section = $(this).attr('href');
+
+
+            if ($('section').is(section)) {
+                var offset = $(section).offset().top;
+
+                if (offset <= currentTop && offset + $(section).innerHeight() > currentTop) {
+                    // console.log(section);
+                    $(this).addClass('active');
                 } else {
-                    $('.video__wrapper iframe').remove();
+                    $(this).removeClass('active');
                 }
-                // $('body').removeClass('disabled-onepage-scroll');
-                $('.jobs__content').removeClass('top_overlay');
-                $('.price__item, .price__info li').removeClass('show');
-                app.pageLoaded == true;
-            },
-            afterMove: function(index) {
-                // hideLoader();
-                setHash(index);
-                app.current = index;
-                enabledScroll();
-                $('[data-index='+index+']').addClass('visibled');
-                timeToShow($('.projects__photo'));
-
-
-                if ($('[data-index='+index+']').hasClass('projects')) {
-                    disabledScroll();
-                    return false;
-                }
-
-                if (index === 1) {
-                    if (player.onReady) {
-                        player.playVideo();
-                    }
-                }
-
-                if (index === 3) {
-                    disabledScroll();
-                    setTimeout(function () {
-                        $('.jobs__content').addClass('top_overlay');
-                    }, 1000);
-                    // console.log(e);
-                }
-
-                if (index === 4) {
-                    $('.price__item').each(function(index, el) {
-                        setTimeout(function () {
-                            $(el).addClass('show');
-                        }, 600 * index);
-                    });
-                    $('.price__info li').each(function(index, el) {
-                        setTimeout(function () {
-                            $(el).addClass('show');
-                        }, 200 * index);
-                    });
-                }
-
-                setActiveNav();
-
-            },
+            }
         });
-
     }
-
 }
 
-function setActiveNav() {
-    $('.nav [data-slide]').each(function() {
-        var thisHash = $(this).attr('href').replace(/^.*?(#|$)/,'');
-        // console.log(thisHash +' '+ app.hash);
+function scrollToHash() {
 
-        if (thisHash === app.hash) {
-            $(this).addClass('active');
-        } else {
-            $(this).removeClass('active');
+    $('.navbar__link').click( function(){
+        if ($('section').is('#home')) {
+            console.log('#home');
+            // e.preventDefault();
+            var scroll_el = $(this).attr('href').replace(/^.*?(#|$)/,''),
+            headerH = $('.header').height();
+
+
+            if (isXsWidth()) {
+                $('body').removeClass('nav_open');
+            }
+            if (scroll_el !== '') {
+                var el = $('#'+scroll_el);
+                if (el.length != 0) {
+                    $('html, body').animate({ scrollTop: el.offset().top - headerH}, 500);
+                }
+                return false;
+            }
         }
     });
 }
 
-function disabledScroll() {
-    $("body").addClass("disabled-onepage-scroll");
-}
+scrollToHash();
 
-function enabledScroll() {
-    $("body").removeClass("disabled-onepage-scroll");
-}
-
-$('.scrolled').on('mouseenter', function(e) {
-    disabledScroll();
-})
-
-// $('body').on('mouseenter', function(e) {
-//     if (e.target.classList[1] == 'scrolled') {
+//
+// function disabledScroll() {
+//     $("body").addClass("disabled-onepage-scroll");
+// }
+//
+// function enabledScroll() {
+//     $("body").removeClass("disabled-onepage-scroll");
+// }
+//
+// $('.scrolled').on('mouseenter', function(e) {
+//     disabledScroll();
+// })
+//
+// // $('body').on('mouseenter', function(e) {
+// //     if (e.target.classList[1] == 'scrolled') {
+// //         disabledScroll();
+// //     } else {
+// //         enabledScroll();
+// //     }
+// // })
+//
+// $('.scrolled').on('mouseleave', function() {
+//     if ($(this).hasClass('.projects__text')) return false;
+//     enabledScroll();
+// })
+//
+// $('.modal').on('shown.bs.modal', function() {
+//     if (!isXsWidth()) {
 //         disabledScroll();
-//     } else {
+//     }
+// });
+//
+// $('.modal').on('hidden.bs.modal', function() {
+//     if (!isXsWidth()) {
 //         enabledScroll();
 //     }
-// })
-
-$('.scrolled').on('mouseleave', function() {
-    if ($(this).hasClass('.projects__text')) return false;
-    enabledScroll();
-})
-
-$('.modal').on('shown.bs.modal', function() {
-    if (!isXsWidth()) {
-        disabledScroll();
-    }
-});
-
-$('.modal').on('hidden.bs.modal', function() {
-    if (!isXsWidth()) {
-        enabledScroll();
-    }
-});
-
+// });
+//
 $('.modal').on('mousemove', function(e) {
     if (!isXsWidth()) {
         // console.log(e.screenX);
@@ -220,37 +171,37 @@ $('.modal').on('mousemove', function(e) {
     }
 });
 
-function timeToShow(el) {
+function timeToShow(el, dalay) {
     el.each(function(i) {
         var self = $(this);
         // console.log(self);
         setTimeout(function () {
             self.addClass('show');
-        }, 200 * i);
+        }, dalay * i);
     });
 }
 
 
-function goToSlide(el) {
-    if (!isXsWidth()) {
-        app.page.moveTo(el.data('slide'));
-    }
-}
-$('[data-slide]').on('click', function() {
-    goToSlide($(this));
-});
+// function goToSlide(el) {
+//     if (!isXsWidth()) {
+//         app.page.moveTo(el.data('slide'));
+//     }
+// }
+// $('[data-slide]').on('click', function() {
+//     goToSlide($(this));
+// });
 
-$('.projects__next').on('click', function() {
-    // console.log(app.section.length);
-    // console.log(app.current);
-    if (!isXsWidth()) {
-        if (app.current == app.section.length) {
-            app.page.moveTo(1);
-        } else {
-            app.page.moveDown();
-        }
-    }
-})
+// $('.projects__next').on('click', function() {
+//     // console.log(app.section.length);
+//     // console.log(app.current);
+//     if (!isXsWidth()) {
+//         if (app.current == app.section.length) {
+//             app.page.moveTo(1);
+//         } else {
+//             app.page.moveDown();
+//         }
+//     }
+// })
 
 
 function showLoader() {
@@ -265,33 +216,73 @@ function hideLoader() {
 function loadPage() {
     // console.log(app.hash);
     if (!isXsWidth()) {
-        var screenIndex = $(app.hash).data('index');
 
-        // console.log(screenIndex);
-        if (screenIndex !== 0) {
-            app.section.first().addClass('visibled');
-        } else {
-            app.section.first().removeClass('visibled');
-        }
-
-        $('.main_content').moveTo(screenIndex);
-
-        $('[data-slide]').removeClass('active');
-        $('.section.active').addClass('visibled');
-        timeToShow($('.projects__photo'));
-        setActiveNav();
+        $('#home').addClass('active');
         $('body').addClass('loaded');
+        // var screenIndex = $(app.hash).data('index');
+        //
+        // // console.log(screenIndex);
+        // if (screenIndex !== 0) {
+        //     app.section.first().addClass('visibled');
+        // } else {
+        //     app.section.first().removeClass('visibled');
+        // }
+        //
+        // $('.main_content').moveTo(screenIndex);
+        //
+        // $('[data-slide]').removeClass('active');
+        // $('.section.active').addClass('visibled');
+
+        setActiveNav();
+        // $('body').addClass('loaded');
+        $('.section').viewportChecker({
+            repeat: true,
+            offset: 200,
+
+            callbackFunction: function(elem, action) {
+                // var elClass = elem.attr('class');
+
+                // console.log(elClass);
+
+                // $('.section__left').css('zIndex', 1);
+                // $('.' + elClass + ' .section__left').css('zIndex', 2);
+                $(elem).addClass('active');
+
+                if (elem.hasClass('price')) {
+                    // console.log('Price');
+                    timeToShow($('.price__item'), 500);
+                    timeToShow($('.price__info li'), 200);
+                }
+                if (elem.hasClass('projects')) {
+                    // console.log(elem.attr('id'), action);
+                    //
+                    // if (action == 'remove') {
+                    //     // console.log(elem);
+                    //     $(elem).find('iframe').remove();
+                    // }
+                    // console.log('project');
+                    timeToShow($('.projects__photo'), 200);
+                }
+            }
+        });
+
+        $('.jobs__item').viewportChecker({
+            offset: 20,
+            callbackFunction: function(elem) {
+                elem.addClass('show');
+            }
+        })
     }
 }
 
-function setHash(index) {
-    var self = $('[data-index='+index+']'),
-    currentIndex = index;
-    app.hash = self.attr('id');
-
-    // console.log(app.hash);
-    location.hash = app.hash;
-}
+// function setHash(index) {
+//     var self = $('[data-index='+index+']'),
+//     currentIndex = index;
+//     app.hash = self.attr('id');
+//
+//     // console.log(app.hash);
+//     location.hash = app.hash;
+// }
 
 
 
@@ -307,8 +298,22 @@ $(window).resize(function(event) {
 function checkOnResize() {
     // fontResize();
     // $(".jobs__content").reinitialise();
-    renderContent();
+    // renderContent();
     replaceVideoProjects();
+
+    if (!isXsWidth()) {
+        $('.price__info').appendTo('.price .section__left');
+    } else {
+        $('.price__info').appendTo('.price');
+
+        $('.nav__toggle').on('click', function() {
+            $('body').toggleClass('nav_open');
+        });
+        // $('.jobs__more .btn').on('click', function() {
+        //     $('.jobs__item').toggleClass('show-more');
+        //     $(this).hide();
+        // });
+    }
 }
 
 function replaceVideoProjects() {
@@ -381,29 +386,3 @@ function formSubmit() {
     });
 }
 formSubmit();
-
-if (isXsWidth()) {
-    $('.nav__toggle, .navbar__link').on('click', function() {
-        $('body').toggleClass('nav_open');
-    });
-
-    $('.navbar__link').click( function(){
-        var scroll_el = $(this).attr('href').replace(/^.*?(#|$)/,''),
-            headerH = $('.header').innerHeight();
-
-            console.log(scroll_el);
-        $('body').removeClass('nav_open');
-        if (scroll_el !== '') {
-            var el = $('#'+scroll_el);
-            if (el.length != 0) {
-                $('html, body').animate({ scrollTop: el.offset().top - headerH}, 500);
-            }
-            return false;
-        }
-    });
-
-    $('.scroll').on('click', function() {
-        $('.jobs__item').toggleClass('show-more');
-        $(this).hide();
-    });
-}

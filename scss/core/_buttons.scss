@@ -64,6 +64,20 @@ button {
 		}
 	}
 
+	&_seccondary {
+		background-color: #807870;
+		color: $color_withe;
+		border-radius: 0;
+		padding: 0.7em 1em;
+		text-transform: uppercase;
+		border: 0.06em solid #807870;
+
+		&:hover {
+			background-color: transparent;
+			color: #807870;
+		}
+	}
+
 	// &:hover {
 	// 	background-color: #fff;
 	// 	color: #000;
