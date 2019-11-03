@@ -646,6 +646,12 @@ button.icon_next {
 .about {
     &:before {}
 
+    @media (min-width: 768px) {
+        .name {
+            margin-top: 4.2em;
+        }
+    }
+
     @media (max-width: 767px) {
         .section__left {
             display: none;
@@ -861,8 +867,7 @@ button.icon_next {
             display: none;
         }
 
-        &.top_overlay {
-            }
+        &.top_overlay {}
 
     }
 
